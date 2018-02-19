@@ -1,6 +1,7 @@
 /*
  * qconsole
  * Copyright (c) 2005-2017 joshua stein <jcs@jcs.org>
+ * Copyright (c) 2018 Gutierri Barboza <me@gutierri.me>
  *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -234,8 +235,14 @@ draw_window(const char *display)
 
 	/* bind to control+o */
 	/* TODO: allow this key to be configurable */
-	XGrabKey(main_win.dpy, XKeysymToKeycode(main_win.dpy, XK_o),
-	    ControlMask, DefaultRootWindow(main_win.dpy), False, GrabModeAsync,
+	XGrabKey(main_win.dpy, XKeysymToKeycode(main_win.dpy, XK_F10),
+	    Mod2Mask, DefaultRootWindow(main_win.dpy), False, GrabModeAsync,
+	    GrabModeAsync);
+	XGrabKey(main_win.dpy, XKeysymToKeycode(main_win.dpy, XK_F10),
+	    Mod3Mask, DefaultRootWindow(main_win.dpy), False, GrabModeAsync,
+	    GrabModeAsync);
+	XGrabKey(main_win.dpy, XKeysymToKeycode(main_win.dpy, XK_F10),
+	    Mod4Mask, DefaultRootWindow(main_win.dpy), False, GrabModeAsync,
 	    GrabModeAsync);
 }
 
