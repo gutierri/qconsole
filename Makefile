@@ -7,7 +7,7 @@ CFLAGS	= -g -O2 -Wall -Wunused -Wmissing-prototypes -Wstrict-prototypes
 PREFIX	= /usr/local
 BINDIR	= $(DESTDIR)$(PREFIX)/bin
 
-INSTALL_PROGRAM = install -s
+INSTALL_PROGRAM = install -D
 
 X11BASE	= /usr/X11R6
 INCLUDES= -I$(X11BASE)/include
@@ -28,7 +28,7 @@ $(OBJS): *.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 install: all
-	$(INSTALL_PROGRAM) $(PROG) $(BINDIR)
+	$(INSTALL_PROGRAM) $(PROG) $(BINDIR)/$(PROG)
 
 clean:
 	rm -f $(PROG) $(OBJS) 
