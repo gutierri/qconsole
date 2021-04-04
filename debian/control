@@ -1,0 +1,14 @@
+Source: qconsole
+Section: x11
+Priority: optional
+Maintainer: Gutierri Barboza <debian+me@gutierri.me>
+Build-Depends: debhelper (>= 11)
+Standards-Version: 4.1.3
+Homepage: https://github.com/gutierri/qconsole
+
+Package: qconsole
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: quake-style console with xterm
+ qconsole is a simple application that makes an xterm window behave
+ like the drop-down console on the game "Quake" (and probably many others).
