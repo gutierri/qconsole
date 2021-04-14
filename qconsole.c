@@ -40,6 +40,7 @@
 #include <sys/wait.h>
 
 #include <X11/Xlib.h>
+#include <X11/Xresource.h>
 #include <X11/Xutil.h>
 #include <X11/Xproto.h>
 
@@ -235,6 +236,12 @@ draw_window(const char *display)
 
 	/* bind to control+o */
 	/* TODO: allow this key to be configurable */
+	XrmDatabase xrdb = XrmGetStringDatabase(XResourceManagerString(main_win.dpy));
+	XrmValue value;
+	char *type;
+	if (!(XrmGetResource(xrdb, "qconsole.kb-binds", NULL, &type, &value)))
+		errx(1, "no value for qconsole.kb in Xresources");
+
 	XGrabKey(main_win.dpy, XKeysymToKeycode(main_win.dpy, XK_F10),
 	    Mod2Mask, DefaultRootWindow(main_win.dpy), False, GrabModeAsync,
 	    GrabModeAsync);
